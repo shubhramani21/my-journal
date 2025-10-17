@@ -48,7 +48,7 @@ public class PageControl {
         SecurityContextHolder.getContext().getAuthentication();
         // final String username = authentication.getName();
 
-        model.addAttribute("id", id);  
+        model.addAttribute("entryId", id.toString());
         return "edit-entry";
     }
 

@@ -70,7 +70,7 @@ public class JournalEntryControl {
         if (!collect.isEmpty()) {
             final Optional<JournalEntry> entryOptional = journalEntryService.findById(id);
             if (entryOptional.isPresent()) {
-                return new ResponseEntity<JournalEntry>(entryOptional.get(), HttpStatus.FOUND);
+                return new ResponseEntity<JournalEntry>(entryOptional.get(), HttpStatus.OK);
             }
         }
 

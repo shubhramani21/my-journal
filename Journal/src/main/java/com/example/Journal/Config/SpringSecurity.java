@@ -44,7 +44,7 @@ public class SpringSecurity{
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout=true")
                         .permitAll())
-                 .httpBasic(Customizer.withDefaults())
+//                 .httpBasic(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)  // For development only
                 .build();
     }
