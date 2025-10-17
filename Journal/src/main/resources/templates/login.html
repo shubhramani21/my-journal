@@ -1,10 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JournalApp</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 </head>
 <body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow p-4">
 
+                    <h2 class="card-title text-center mb-2">Login</h2>
+                    <!-- show error msg if log in failed -->
+                    <div th:if="${param.error}" class="alert alert-danger">
+                        Invalid username or password.
+                    </div>
+
+                    <!-- show logout msg -->
+                    <div th:if="${param.logout}" class="alert alert-success">
+                        You have been logged out successfully.
+                    </div>
+                    
+                    <!-- Spring security handles this login -->
+                    <form th:action="@{/login}" method="post" id="loginForm">
+                        <!-- UserName -->
+                         <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="username"
+                                   name="username"
+                                   placeholder="Enter username" 
+                                   required>
+
+                         </div>
+
+                         <!-- password -->
+                         <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input 
+                                type="password" 
+                                class="form-control" 
+                                id="password"
+                                name="password"
+                                placeholder="Enter password" 
+                                required 
+                                minlength="6">
+                            <div class="form-text">Minimum 6 characters</div>
+                         </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                Sign In
+                            </button>
+                        </div>
+                        
+
+                        <!-- Login Link -->
+                        <div class="text-center mt-3">
+                            <p>Don't have an account? 
+                                <a th:href="@{/signup}">SignUp here</a>
+                            </p>
+                        </div>
+
+                    </form>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+    </script>
 </body>
 </html>
