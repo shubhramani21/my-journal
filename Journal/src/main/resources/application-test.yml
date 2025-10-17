@@ -1,0 +1,14 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://ramanishubh_db_user:Shubh2108@cluster0.664hscx.mongodb.net/journal_test?retryWrites=true&w=majority&appName=Cluster0
+      auto-index-creation: true
+  application:
+    name: Journal-Test
+
+logging:
+  level:
+    com.example.Journal.Repository: DEBUG
+
+server:
+  port: 8081
