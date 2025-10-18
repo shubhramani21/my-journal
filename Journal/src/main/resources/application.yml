@@ -2,16 +2,6 @@ spring:
   profiles:
     active: dev
 
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: shubhvramani@gmail.com
-
 logging:
   level:
     com.example.Journal: INFO
-
-weather:
-  api:
-    key: 408f27e03d6d623a979c0219d12e20e1
-    url: http://api.weatherstack.com/current

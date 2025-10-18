@@ -2,8 +2,6 @@ package com.example.Journal.Control;
 
 import com.example.Journal.Entity.User;
 import com.example.Journal.Service.UserService;
-import com.example.Journal.Service.WeatherService;
-import com.example.Journal.api.response.WeatherResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,28 +18,8 @@ public class UserControl {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private WeatherService weatherService;
 
 
-    @GetMapping
-    public ResponseEntity<?> greeting() {
-        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        final WeatherResponse.Current response = weatherService.getWeather("Nagpur").getCurrent();
-
-        final int feelsLike = response.getFeelsLike();
-        final int temperature = response.getTemperature();
-        final List<String> weatherDescriptions = response.getWeatherDescriptions();
-
-        final String weatherDescString = String.join(", ", weatherDescriptions);
-
-        String weatherInfo = "\nTemperature: " + temperature + "\nFeels Like: " + feelsLike + "\nDescription: " + weatherDescString;
-
-        String msg = "Hi " + authentication.getName() + weatherInfo;
-        return new ResponseEntity<>(msg, HttpStatus.OK);
-
-
-    }
 
     // 1. update user details by userName
     @PutMapping

@@ -50,6 +50,7 @@ public class UserService {
         }
     }
 
+    // returns all the users
     public List<User> getAll(){
         try {
             return userRepository.findAll();
@@ -58,6 +59,8 @@ public class UserService {
         }
         return Collections.emptyList();
     }
+
+    // finds user by id
     public Optional<User> findById(ObjectId id){
         try {
             return userRepository.findById(id);
@@ -66,6 +69,8 @@ public class UserService {
         }
         return Optional.empty();
     }
+
+    // finds user by username
     public User findByUserName(String userName){
         try {
             return userRepository.findByUserName(userName);
@@ -75,6 +80,7 @@ public class UserService {
         return null;
     }
 
+    // used for deleting users
     @Transactional
     public void deleteUserByUserName(String userName) {
 
@@ -99,6 +105,7 @@ public class UserService {
         }
     }
 
+    // creating new admin
     public void saveNewAdmin(User admin) {
         try {
             admin.setPassword(encoder.encode(admin.getPassword()));

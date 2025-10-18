@@ -10,7 +10,7 @@
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
             <a href="/entries" class="navbar-brand">My Journal</a>
-            <form action="/logout" method="post">
+            <form th:action="@{/logout}" method="post">
                 <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
             </form>
 

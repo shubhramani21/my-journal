@@ -25,10 +25,6 @@ public class PublicControl {
     // sign Up
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody User user) {
-        log.info("=============================");
-        log.info("userName{}",user.getUserName());
-        log.info("password{}", user.getPassword());
-        log.info("=============================");
 
         try {
             userService.saveNewUser(user);

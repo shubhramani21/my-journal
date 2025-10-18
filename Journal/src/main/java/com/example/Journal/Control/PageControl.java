@@ -29,11 +29,6 @@ public class PageControl {
 
     @GetMapping("/entries")
     public String entriesPage(Model model){
-        // final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        // final String username = authentication.getName();
-
-        // model.addAttribute("username", username);
-
         return "entries";
     }
 
@@ -45,21 +40,11 @@ public class PageControl {
 
     @GetMapping("/entries/edit/{id}")
     public String editEntryPage(Model model, @PathVariable ObjectId id){
-        SecurityContextHolder.getContext().getAuthentication();
-        // final String username = authentication.getName();
+
 
         model.addAttribute("entryId", id.toString());
         return "edit-entry";
     }
 
-    // @GetMapping("/home")
-    // public String homePage(Model model){
-    //     final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    //     final String username = authentication.getName();
-
-    //      model.addAttribute("username", username);
-
-    //     return "home";
-    // }
 
 }
