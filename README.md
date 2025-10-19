@@ -123,21 +123,23 @@ Open your browser and go to: `http://localhost:8080`
 
 ## 📦 Project Structure
 ```
-journal-app/
-├── src/
-│   ├── main/
-│   │   ├── java/com/example/Journal/
-│   │   │   ├── Config/           # Security configuration
-│   │   │   ├── Control/          # Controllers
-│   │   │   ├── Entity/           # Data models
-│   │   │   ├── Repository/       # Database repositories
-│   │   │   └── Service/          # Business logic
-│   │   └── resources/
-│   │       ├── templates/        # Thymeleaf HTML templates
-│   │       └── application.properties
-├── screenshots/                   # App screenshots
-├── pom.xml                       # Maven dependencies
-└── README.md
+my-journal/
+├── Journal/ # Main application directory
+│ ├── src/
+│ │ ├── main/
+│ │ │ ├── java/com/example/Journal/
+│ │ │ │ ├── Config/ # Security configuration
+│ │ │ │ ├── Control/ # Controllers (REST & Page)
+│ │ │ │ ├── Entity/ # Data models (User, JournalEntry)
+│ │ │ │ ├── Repository/ # MongoDB repositories
+│ │ │ │ └── Service/ # Business logic layer
+│ │ │ └── resources/
+│ │ │ │ ├── templates/ # Thymeleaf HTML templates
+│ │ │ │ └── application.yml # Configuration
+│ │ └── test/ # Unit tests
+│ ├── Dockerfile # Docker configuration
+│ └── pom.xml # Maven dependencies
+└── README.md # This file
 ```
 
 ---
