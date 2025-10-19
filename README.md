@@ -87,7 +87,7 @@ MongoDB Atlas (Cloud Database)
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/YOUR_USERNAME/journal-app.git
+git clone https://github.com/shubhramani21/journal-app.git
 cd journal-app
 ```
 
