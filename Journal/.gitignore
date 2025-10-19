@@ -3,6 +3,7 @@
 *.env
 application-dev.yml
 application-local.yml
+application-prod.yml
 
 HELP.md
 target/
@@ -24,6 +25,10 @@ target/
 *.iws
 *.iml
 *.ipr
+
+
+### INGNORING LOGS
+journalApp.log
 
 ### NetBeans ###
 /nbproject/private/
