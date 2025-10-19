@@ -118,28 +118,6 @@ spring.data.mongodb.uri=mongodb+srv://username:password@cluster.mongodb.net/jour
 
 Open your browser and go to: `http://localhost:8080`
 
----
-
-## 🔐 API Endpoints
-
-### Public Endpoints
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/login` | Login page |
-| GET | `/signup` | Signup page |
-| POST | `/public` | User registration |
-
-### Protected Endpoints (Requires Authentication)
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/entries` | View all user's entries |
-| GET | `/entries/new` | Create entry form |
-| GET | `/entries/edit/{id}` | Edit entry form |
-| GET | `/journal` | Get all entries (API) |
-| POST | `/journal` | Create new entry (API) |
-| GET | `/journal/id/{id}` | Get entry by ID (API) |
-| PUT | `/journal/id/{id}` | Update entry (API) |
-| DELETE | `/journal/{id}` | Delete entry (API) |
 
 ---
 
