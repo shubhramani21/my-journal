@@ -1,6 +1,17 @@
 spring:
-  profiles:
-    active: dev
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/journaldb}
+      auto-index-creation: true
+  application:
+    name: Journal
+  main:
+    banner-mode: console
+  banner:
+    location: classpath:my-banner.txt
+
+server:
+  port: ${PORT:8080}
 
 logging:
   level:

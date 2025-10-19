@@ -1,3 +1,9 @@
+# Environment variables - NEVER COMMIT THESE
+.env
+*.env
+application-dev.yml
+application-local.yml
+
 HELP.md
 target/
 .mvn/wrapper/maven-wrapper.jar
