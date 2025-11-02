@@ -31,19 +31,10 @@ public class PageControl {
         return "entries";
     }
 
-    @GetMapping("/entries/new")
-    public String newEntryPage(){
-        return "create-entry";
+    @GetMapping({ "/entries/new", "/entries/edit/{id}" })
+    public String entryForm(Model model, @PathVariable(required = false) ObjectId id) {
+        model.addAttribute("entryId", id != null ? id.toString() : null);
+        return "form"; // <-- one shared form.html
     }
-
-
-    @GetMapping("/entries/edit/{id}")
-    public String editEntryPage(Model model, @PathVariable ObjectId id){
-
-
-        model.addAttribute("entryId", id.toString());
-        return "edit-entry";
-    }
-
 
 }

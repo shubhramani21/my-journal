@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+</head>
+<body>
+    
+    <div id="form-header">
+        <div class="button" id="back"> 
+            <p><i class="ri-arrow-left-line"></i> <span>back</span></p>
+        </div>
+        <div class="app-name">
+            <h1>JournalApp</h1>        
+        </div>
+        <div class="placeholder-balancer"></div>
+    </div>
+    
+    <div class="main-form">
+        <form id = "form">
+                <input type="text" id="title" name="title" placeholder="Title" required>
+
+                <textarea name="entry" id="entry" placeholder="Entry"></textarea>
+
+                <div class="button" id="submit">
+                    <p><i class="ri-corner-down-left-line"></i> <span>save</span> </p>
+                </div>
+        </form>
+
+        
+    </div>
+
+
+      <!-- Make entryId available to JS -->
+    <script th:inline="javascript">
+        const entryId = /*[[${entryId}]]*/ "null";
+    </script>
+    <script src="../static/js/form.js"></script>
+
+    
+
+    <div class="footer">
+        <p>© 2025 JournalApp. All rights reserved.</p>
+    </div>
+    
+</body>
+</html>
