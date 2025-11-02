@@ -1,0 +1,422 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+body {
+    min-height: 100vh; /* ensures footer sticks when short */
+    display: flex;
+    flex-direction: column;
+}
+
+::selection {
+    background-color: black; 
+    color: white; 
+}
+
+#header{
+    height: 150px;
+    width: 100%;
+    flex-shrink: 0;
+
+}
+
+#header .content .title-greeting{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #d9d9d9;
+
+}
+
+#header .content h1{
+    font-weight:normal;
+    font-size: 70px;
+}
+
+#header .content p{
+    position: relative;
+    font-size: 44px;
+    font-weight: 100;
+}   
+
+
+#header .content nav a{
+    text-decoration: none;
+    color: black;
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 500;
+}   
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+#header #profile-icon{
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;    
+    align-items: center; 
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: none;
+    font-size: 23px;
+    top: 20px;
+    right: 40px;
+    cursor: pointer;
+    box-shadow: 0 0 0 1px black inset;
+}
+
+#header #profile-icon:hover{
+    background-color: #000;
+    /* box-shadow: 0 0 0 1px black inset, 0 0 8px rgba(0, 0, 0, 0.2); */
+    color: white;
+    transition: all 0.3s ease-in-out;
+    /* transition: all 0.2s ease; */
+}
+
+
+#signOutMenu {
+    position: absolute;
+    top: 90px; 
+    right: 35px; 
+    width: 120px;
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it stays above other content */
+    display: none; 
+    padding: 5px;
+}
+
+#signOutMenu button {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+    color: #333;
+}
+#signOutMenu button:hover {
+    background-color: #f0f0f0;
+    color: black;
+}
+
+
+#main{
+    flex: 1; /* fills remaining space between header and footer */
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; 
+    padding-top: 40px; 
+    padding-bottom: 40px;
+    padding-left: 20px; /* Add some horizontal padding */
+    padding-right: 20px;
+}
+
+#main #elements{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.loading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #555;
+    font-size: 17px;
+    align-items: center;
+}
+
+.loading-icon{
+    animation: spin 2s linear infinite;
+    /* margin-bottom: 5px; */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.hidden{
+    display: none !important;
+}
+
+
+.emptyState{
+    display: block;
+}
+
+.emptyState.hidden{
+    display: none;
+}
+
+#main .add-entry-button{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    cursor: pointer;
+    
+}
+
+#main .add-entry-button:hover{
+    background-color: white;
+    color: #000;
+    box-shadow: 0 0 0 1px black inset, 0 0 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+
+#card-list{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+#main .card{
+    height: 130px;
+    width: 800px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    /* border-radius: 8px; */
+    cursor: pointer;  
+    margin-bottom: 10px;
+}
+
+#main .card:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    
+}
+
+#main .card:hover .delete{
+    background-color: black;
+}
+
+
+#main .card .title{
+    width: 20%;
+    height: 100%;
+    /* background-color: red; */
+    border-right: 2px solid #d9d9d9;
+    padding: 12px 3px 3px 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#main .card .title h2{
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+#main .card .title .date{
+    font-size: 12px;
+    color: grey;
+    margin: 0;
+}
+
+#main .card .entry-content{
+    width: 80%;
+    height: 100%;
+    /* background-color: red; */
+    padding: 5px 12px 5px 12px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+#main .card .entry-content p{
+    font-size: 16px;
+    color: #333333;
+    line-height: 1.5;
+}
+
+#main .card .delete{
+    position: relative;
+    height: 15px;
+    width: 15px;
+    background-color: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: small;
+    opacity: 1;
+    transition: background-color 0.3s ease;
+}
+
+#main .card .delete:hover{
+    background-color: red;
+    opacity: 1;
+}
+
+
+.footer{
+    flex-shrink: 0;
+    text-align: center;
+    padding: 10px 0;
+    /* background-color: #f2f2f2; */
+    color: #555;
+    border-top: 1px solid #d9d9d9;
+    width: 100%;
+    font-size: 14px;
+}
+
+
+
+
+
+/* form */
+
+
+
+#form-header{
+    height: 100px;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #d9d9d9;
+    position: relative;
+    padding: 0 40px;
+    justify-content: space-between;
+    /* background-color: green; */
+    
+}
+
+.placeholder-balancer{
+    width: 60px;
+}
+.button{
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    transition: all 0.2s ease-in-out; 
+}
+
+.button :hover{
+    text-decoration-line: underline;
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.button span:hover{
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+
+.main-form{
+    /* background-color: red; */
+    /* width: 100%; */
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.main-form form{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+}
+
+.main-form form input[type="text"]{
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #d9d9d9;
+    font-size: 20px;
+     font-weight: bold;
+    background-color: white;
+    flex-shrink: 0;
+    margin-bottom: 20px;
+}
+
+
+.main-form form input[type="text"]::placeholder {
+    font-weight: normal;
+    color: #999;
+}
+
+.main-form form textarea{
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #d9d9d9;
+    font-size: 16px;
+    resize: none;
+    flex-grow: 1; 
+    flex-shrink: 1;
+}
+
+.main-form form input[type="text"]:focus,
+.main-form form textarea:focus {
+    outline: none;
+    border-color: black;
+    box-shadow: 0 0 0 1px black;
+}
+
+
+#submit{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+    
+}
+
+#submit .button{
+    background-color: black;
+}
