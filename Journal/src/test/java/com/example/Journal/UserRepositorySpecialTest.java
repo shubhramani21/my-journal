@@ -27,7 +27,7 @@ public class UserRepositorySpecialTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        testUser = new User(null, "testUser", "testPass", "test@example.com", true, new ArrayList<>(), new ArrayList<>());
+        testUser = new User(null,"test", "test", "testUser", "testPass", "test@example.com", true, new ArrayList<>(), new ArrayList<>());
     }
 
     @Test
