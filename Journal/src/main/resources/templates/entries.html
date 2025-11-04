@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minimal</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
     rel="stylesheet"/>
@@ -15,11 +15,11 @@
         <div class="content">
             <div class="title-greeting">
                 <h1>JournalApp</h1>
-                <p>Hello, <span id="user-greeting"></span></p>
+                <p>Hello, <span th:text="${username}" id="user-greeting"></span></p>
             </div>
 
             <div id="profile-icon">
-                <span id="user-first-letter" ></span>
+                <span th:text="${#strings.substring(username, 0, 1).toUpperCase()}" id="user-first-letter"></span>
             </div>
             <div id="signOutMenu" > 
                 <form  th:action="@{/logout}" method="post">
