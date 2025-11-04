@@ -3,10 +3,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     const title = document.querySelector("#title");
     const entryInput = document.querySelector("#entry");
     const backBtn = document.querySelector("#back");
-    //// 4:33 am done make sure you check submit button and edit methods 
     const submitDiv = document.querySelector("#submit");
 
     const isEditMode = entryId && entryId !== "null" && entryId.trim() !== "";
+
+
+    submitDiv.addEventListener("click", () => {
+            document.getElementById("form").requestSubmit();
+    });
+
 
     backBtn.addEventListener("click", () => {
         window.location.href = "/entries";
@@ -58,10 +63,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 alert(isEditMode ? "Entry updated!" : "Entry created!");
                 window.location.href = "/entries";
             } else {
-                alert("Failed to save entry");
+                throw error("Failed to submit form");
             }
         } catch (e) {
-            console.error("Error submitting form:", e);
+            alert("Error submitting form:", e);
         }
     })
 })

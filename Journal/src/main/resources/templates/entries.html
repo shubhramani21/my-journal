@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"></html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +15,11 @@
         <div class="content">
             <div class="title-greeting">
                 <h1>JournalApp</h1>
-                <p>Hello, Mishti</p>
+                <p>Hello, <span id="user-greeting"></span></p>
             </div>
 
             <div id="profile-icon">
-                M
+                <span id="user-first-letter" ></span>
             </div>
             <div id="signOutMenu" > 
                 <form  th:action="@{/logout}" method="post">

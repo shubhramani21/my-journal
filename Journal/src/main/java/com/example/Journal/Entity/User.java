@@ -1,6 +1,5 @@
 package com.example.Journal.Entity;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,12 +24,14 @@ public class User {
     @Id
     private ObjectId id;
 
+    private String firstName;
+    private String lastName;
+
     @NonNull
     @Indexed(unique = true)
     private String userName;
     @NonNull
     private String password;
-
 
     private String email;
     private boolean sentimentAnalysis;
