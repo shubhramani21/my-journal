@@ -45,7 +45,6 @@ Create an account and start journaling!
 
 ### Frontend
 - **Thymeleaf** - Server-side Java template engine
-- **Bootstrap 5** - Modern CSS framework for responsive design
 - **JavaScript** - Dynamic functionality and API calls
 - **Fetch API** - Client-server communication
 
