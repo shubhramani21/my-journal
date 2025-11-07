@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimal</title>
+    <title>BrainDump | home</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
@@ -14,7 +14,7 @@
     <div id="header">
         <div class="content">
             <div class="title-greeting">
-                <h1>JournalApp</h1>
+                <h1>BrainDump</h1>
                 <p>Hello, <span th:text="${username}" id="user-greeting"></span></p>
             </div>
 
@@ -62,11 +62,15 @@
     </div>
 
     <div class="footer">
-        <p>© 2025 JournalApp. All rights reserved.</p>
+        <p>© 2025 BrainDump. All rights reserved.</p>
     </div>
 
-    <script src="../static/js/scripts.js"></script>
+    <!-- <script src="../static/js/scripts.js"></script> -->
+    <script th:src="@{/js/scripts.js}"></script>
 
-    <script src="../static/js/entries.js"></script>
+    <!-- <script src="../static/js/entries.js"></script> -->
+    <script th:src="@{/js/entries.js}"></script>
+
+    
 </body>
 </html>

@@ -1,6 +1,5 @@
 package com.example.Journal.Control;
 
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,18 +20,38 @@ public class PublicControl {
     @Autowired
     private UserService userService;
 
-
     // sign Up
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody User user) {
 
         try {
+            
+            String userName = user.getUserName();
+
+            // checking if user already exsits based on username
+            if (userService.findByUserName(userName) != null) {
+                log.warn("User already exists {}", user.getUserName());
+                return new ResponseEntity<>("Username already exists. Please choose another.", HttpStatus.CONFLICT);
+            }
+
+            // checking if email is used for any other account
+            if (userService.findByEmail(user.getEmail()) != null) {
+                log.warn("Email already exists {}", user.getEmail());
+                return new ResponseEntity<>("An account with this email already exists.", HttpStatus.CONFLICT);
+            }
+
             userService.saveNewUser(user);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+
+            log.info("New User created successfully {}", user.getUserName());
+
+            return new ResponseEntity<>("Account created successfully", HttpStatus.CREATED);
+
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+            log.error("Failed to create user: {}", e.getMessage(), e);
+
+            return new ResponseEntity<>("Error creating account. Please try again.", HttpStatus.BAD_REQUEST);
         }
     }
-
 
 }

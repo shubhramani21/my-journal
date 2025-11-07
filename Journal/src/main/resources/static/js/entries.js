@@ -49,9 +49,7 @@ async function loadEntries() {
                             <p>${entry.content}</p>
                         </div>
 
-                        <div class="delete" onclick="deleteEntry('${
-                          entry.id
-                        }')">
+                        <div class="delete" onclick="event.stopPropagation(); deleteEntry('${entry.id}')">
                             <i class="ri-close-line"></i>
                         </div>
                     </div>
@@ -59,6 +57,10 @@ async function loadEntries() {
                 `
           )
           .join("");
+
+
+          trimContent();
+
       }
     } else if (response.status === 404) {
       loading.style.display = "none";

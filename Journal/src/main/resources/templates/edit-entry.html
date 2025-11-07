@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainDump | Edit</title>
+
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+
+    <!-- Remix icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div id="form-header">
+        <div class="button" id="back">
+            <p><i class="ri-arrow-left-line"></i> <span>back</span></p>
+        </div>
+        <div class="app-name">
+            <h1>BrainDump</h1>
+        </div>
+        <div class="placeholder-balancer"></div>
+    </div>
+
+    <div class="main-form">
+        <form id="form">
+            <input type="text" id="title" name="title" placeholder="Title" required>
+            <textarea name="entry" id="entry" placeholder="Entry"></textarea>
+
+            <div class="button" id="submit">
+                <p><i class="ri-corner-down-left-line"></i> <span>save</span></p>
+            </div>
+        </form>
+    </div>
+
+    <script th:inline="javascript">
+
+        const submitDiv = document.getElementById("submit");
+        const backBtn = document.getElementById("back");
+
+        submitDiv.addEventListener("click", () => {
+            form.requestSubmit();
+        });
+
+        backBtn.addEventListener("click", () => {
+            window.location.href = "/entries";
+        });
+
+    </script>
+
+    <script th:inline="javascript">
+        const entryId = /*[[${entryId}]]*/ "";
+
+        async function fetchEntryData() {
+            try {
+                const response = await fetch(`/journal/id/${entryId}`, {
+                    method: 'GET',
+                    credentials: 'same-origin'
+                });
+
+                if (response.ok) {
+                    const entry = await response.json();
+
+                    document.getElementById("title").value = entry.title || "";
+                    document.getElementById("entry").value = entry.content || "";
+                }
+
+            } catch (e) {
+                console.error("Error fetching entry data:", e);
+            }
+        }
+
+        document.getElementById("form").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('entry').value;
+
+
+            try {
+                const response = await fetch(`/journal/id/${entryId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify({
+                        title: title,
+                        content: content
+                    })
+                });
+
+                if (response.ok) {
+                    setTimeout(() => {
+                        window.location.href = "/entries";
+                    }, 500);
+
+                } else {
+                    console.error("Failed to update entry");
+                    throw new Error("Failed to update entry");
+                }
+            } catch (error) {
+                alert("Failed to update entry");
+                console.error("Error updating entry:", error);
+            }
+        });
+
+        // Load entry on page load
+        fetchEntryData();
+    </script>
+
+    <div class="footer">
+        <p>© 2025 BrainDump. All rights reserved.</p>
+    </div>
+</body>
+
+</html>

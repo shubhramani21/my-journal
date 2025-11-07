@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BrainDump | Login</title>
-     <link rel="stylesheet" th:href="@{/css/styles.css}" />
-<!--     <link rel="stylesheet" href="../static/css/styles.css" />-->
-     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
-      <link
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <!--     <link rel="stylesheet" href="../static/css/styles.css" />-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
     <div id="auth-form-container">
       <form th:action="@{/login}" method="post" id="login-signup-form">
@@ -26,11 +29,23 @@
 
         <label for="password">Password</label>
         <div class="password-container">
-            <input type="password" id="password" name="password" required placeholder="Enter your password" />
-            <i class="ri-eye-line" id="togglePassword"></i>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            placeholder="Enter your password"
+          />
+          <i class="ri-eye-line" id="togglePassword"></i>
         </div>
 
+        <div th:if="${param.error}" class="error-message">
+          Invalid username or password. Please try again.
+        </div>
 
+        <div th:if="${param.logout}" class="success-message">
+          You have been logged out.
+        </div>
         <button type="submit"><i class="ri-login-box-line"></i> Login</button>
 
         <p class="signup-text">
@@ -40,7 +55,7 @@
       </form>
     </div>
 
-     <script>
+    <script>
       const passwordInput = document.getElementById("password");
       const togglePassword = document.getElementById("togglePassword");
 
@@ -50,6 +65,18 @@
         togglePassword.classList.toggle("ri-eye-line");
         togglePassword.classList.toggle("ri-eye-off-line");
       });
+    </script>
+
+    <script>
+      setTimeout(() => {
+        document
+          .querySelectorAll(".error-message, .success-message")
+          .forEach((el) => {
+            el.style.transition = "opacity 0.5s";
+            el.style.opacity = "0";
+            setTimeout(() => el.remove(), 500);
+          });
+      }, 4000);
     </script>
   </body>
 </html>

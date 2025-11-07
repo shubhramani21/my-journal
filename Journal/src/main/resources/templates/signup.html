@@ -13,7 +13,7 @@
 
 <body>
     <div id="auth-form-container">
-        <form th:action="@{/signup}" method="post" id="login-signup-form">
+        <form method="post" id="login-signup-form">
             <h2>Create Account</h2>
             <p class="subtitle">Join <strong>BrainDump</strong> and start writing freely</p>
 
@@ -41,6 +41,8 @@
                 <i class="ri-eye-line" id="toggleConfirmPassword"></i>
             </div>
 
+            <div id="alert-container"></div>
+
             <button type="submit"><i class="ri-user-add-line"></i> Sign Up</button>
 
             <p class="signup-text">
@@ -50,7 +52,7 @@
         </form>
     </div>
 
-    <script>
+    <script th:inline="javascript">
         // Password toggle for main password
         const passwordInput = document.getElementById("password");
         const togglePassword = document.getElementById("togglePassword");
@@ -73,6 +75,7 @@
             toggleConfirmPassword.classList.toggle("ri-eye-off-line");
         });
     </script>
+    <script th:src="@{/js/signup.js}"></script>
 </body>
 
 </html>

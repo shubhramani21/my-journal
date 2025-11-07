@@ -80,6 +80,16 @@ public class UserService {
         return null;
     }
 
+
+    public User findByEmail(String email){
+        try{
+            return userRepository.findByEmail(email);
+        }catch(Exception e){
+            log.error("Error Occurred to get user by email: ", e);
+        }
+        return null;
+    }      
+
     // used for deleting users
     @Transactional
     public void deleteUserByUserName(String userName) {

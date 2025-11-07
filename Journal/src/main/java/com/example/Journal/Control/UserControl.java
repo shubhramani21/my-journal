@@ -68,7 +68,7 @@ public class UserControl {
         final User user = userService.findByUserName(userName);
 
         if (user != null) {
-            return new ResponseEntity<>(user, HttpStatus.FOUND);
+            return new ResponseEntity<>(user, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

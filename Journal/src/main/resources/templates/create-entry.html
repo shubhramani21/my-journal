@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainDump | Create</title>
+
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+
+    <!-- Remix icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div id="form-header">
+        <div class="button" id="back">
+            <p><i class="ri-arrow-left-line"></i> <span>back</span></p>
+        </div>
+        <div class="app-name">
+            <h1>BrainDump</h1>
+        </div>
+        <div class="placeholder-balancer"></div>
+    </div>
+
+    <div class="main-form">
+        <form id="form">
+            <input type="text" id="title" name="title" placeholder="Title" required>
+            <textarea name="entry" id="entry" placeholder="Entry"></textarea>
+
+            <div class="button" id="submit">
+                <p><i class="ri-corner-down-left-line"></i> <span>save</span></p>
+            </div>
+        </form>
+    </div>
+
+
+    <script th:inline="javascript">
+        const submitDiv = document.getElementById("submit");
+        const backBtn = document.getElementById("back");
+
+        submitDiv.addEventListener("click", () => {
+            form.requestSubmit();
+        });
+
+        backBtn.addEventListener("click", () => {
+            window.location.href = "/entries";
+        });
+
+    </script>
+
+    <script th:inline="javascript">
+
+        document.getElementById("form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const titleValue = document.getElementById("title").value.trim();
+            const contentValue = document.getElementById("entry").value;
+
+
+            try {
+                const response = await fetch(`/journal`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify({
+                        title: titleValue,
+                        content: contentValue
+                    })
+                });
+
+
+                if (response.ok || response.status === 201) {
+                    // alert('Entry saved! Redirecting...');
+
+                    setTimeout(() => {
+                        window.location.href = '/entries';
+                    }, 1000);
+                } else {
+                    throw new Error("Failed to submit form");
+                }
+
+
+            } catch (e) {
+                console.error('Error submitting entry:', e);
+                alert('Error submitting entry: ' + e.message);
+            }
+        });
+    </script>
+
+    <div class="footer">
+        <p>© 2025 BrainDump. All rights reserved.</p>
+    </div>
+
+</body>
+
+</html>
